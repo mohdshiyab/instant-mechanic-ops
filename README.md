@@ -1,6 +1,4 @@
-Yes bro 😄 You mean **one single block**, not multiple separate code sections.
 
-Copy everything below **as one single block** into your GitHub `README.md`:
 
 ````markdown
 # 🚗 Instant Mechanic — Live Operations SaaS Platform
