@@ -1,17 +1,5 @@
 
 
-````markdown
-# 🚗 Instant Mechanic — Live Operations SaaS Platform
-
-[![Live Application](https://img.shields.io/badge/Live_App-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://instant-mechanic-ops-dmz3.vercel.app/)
-[![API Docs](https://img.shields.io/badge/API_Docs-Swagger_UI-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](https://instant-mechanic-ops-dmz3.vercel.app/docs)
-[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mohdshiyab/instant-mechanic-ops)
-[![Tests](https://img.shields.io/badge/Tests-10%2F10_Passing-brightgreen?style=for-the-badge&logo=vitest&logoColor=white)](https://github.com/mohdshiyab/instant-mechanic-ops)
-
-A production-grade, full-stack **Live Vehicle Service Operations Dashboard** built for **Instant Mechanic** to manage real-time fleet dispatching, roadside emergency handling, mechanic GPS telemetry tracking, work order lifecycles, and financial business intelligence.
-
----
-
 ## 📋 Submission Overview
 
 - **Candidate Name:** Mohammad Shiyabuddeen
