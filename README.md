@@ -554,11 +554,3 @@ The application includes realistic seeded operational data:
 
 ## ⭐ Thank You
 
-Thank you for taking the time to review this project.
-
-I look forward to discussing the architecture, engineering decisions, real-time systems, and implementation details behind the platform.
-
-```
-
-**This is one single block**. Copy from the first `# 🚗 Instant Mechanic` all the way to the final line and paste it into `README.md`.
-```
