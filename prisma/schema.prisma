@@ -1,0 +1,126 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Customer {
+  id          String    @id @default(cuid())
+  name        String
+  email       String    @unique
+  phone       String
+  avatar      String?
+  address     String
+  city        String
+  totalSpent  Float     @default(0.0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  vehicles    Vehicle[]
+  bookings    Booking[]
+}
+
+model Vehicle {
+  id           String    @id @default(cuid())
+  customerId   String
+  make         String
+  model        String
+  year         Int
+  licensePlate String
+  vin          String
+  color        String
+  fuelType     String
+  mileage      Int       @default(0)
+  createdAt    DateTime  @default(now())
+
+  customer     Customer  @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  bookings     Booking[]
+}
+
+model Mechanic {
+  id              String    @id @default(cuid())
+  name            String
+  email           String    @unique
+  phone           String
+  avatar          String?
+  rating          Float     @default(5.0)
+  totalReviews    Int       @default(0)
+  jobsCompleted   Int       @default(0)
+  status          String    @default("AVAILABLE") // AVAILABLE, BUSY, EN_ROUTE, ON_BREAK, OFFLINE
+  latitude        Float
+  longitude       Float
+  address         String
+  specialties     String    // JSON array of strings
+  vehicleType     String    // Van, Motorcycle, Mobile Workshop
+  currentBookingId String?
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+
+  bookings        Booking[]
+}
+
+model Service {
+  id                  String    @id @default(cuid())
+  name                String
+  category            String
+  code                String    @unique
+  description         String
+  basePrice           Float
+  estimatedDurationMin Int
+  icon                String
+  createdAt           DateTime  @default(now())
+
+  bookings            Booking[]
+}
+
+model Booking {
+  id                  String    @id // e.g. "BK-1042"
+  customerId          String
+  vehicleId           String
+  mechanicId          String?
+  serviceId           String
+  status              String    @default("PENDING") // PENDING, ASSIGNED, EN_ROUTE, IN_PROGRESS, COMPLETED, CANCELLED
+  priority            String    @default("STANDARD") // STANDARD, HIGH, EMERGENCY
+  scheduledAt         DateTime
+  completedAt         DateTime?
+  address             String
+  latitude            Float
+  longitude           Float
+  amount              Float
+  paymentStatus       String    @default("PENDING") // PAID, PENDING, REFUNDED
+  paymentMethod       String    @default("CARD") // CARD, APPLE_PAY, CASH, INSURANCE
+  notes               String?
+  rating              Int?
+  review              String?
+  estimatedDurationMin Int      @default(60)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+
+  customer            Customer  @relation(fields: [customerId], references: [id])
+  vehicle             Vehicle   @relation(fields: [vehicleId], references: [id])
+  mechanic            Mechanic? @relation(fields: [mechanicId], references: [id])
+  service             Service   @relation(fields: [serviceId], references: [id])
+  timeline            BookingTimeline[]
+}
+
+model BookingTimeline {
+  id        String    @id @default(cuid())
+  bookingId String
+  status    String
+  note      String
+  timestamp DateTime  @default(now())
+
+  booking   Booking   @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+}
+
+model ActivityLog {
+  id          String    @id @default(cuid())
+  type        String    // BOOKING_CREATED, STATUS_CHANGED, MECHANIC_ASSIGNED, EMERGENCY_DISPATCH, PAYMENT_RECEIVED
+  title       String
+  description String
+  metadata    String?   // JSON string
+  createdAt   DateTime  @default(now())
+}
