@@ -1,369 +1,578 @@
-# 🚗 Instant Mechanic — Live Vehicle Service Operations Dashboard
+Yes bro 😄 You mean **one single block**, not multiple separate code sections.
 
-[![CI Pipeline](https://github.com/instant-mechanic/instant-mechanic-ops/actions/workflows/ci.yml/badge.svg)](https://github.com/instant-mechanic/instant-mechanic-ops/actions)
-[![Next.js 15](https://img.shields.io/badge/Next.js-15.1.0-black?logo=next.js)](https://nextjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8?logo=tailwind-css)](https://tailwindcss.com/)
-[![Prisma ORM](https://img.shields.io/badge/Prisma-5.22-2D3748?logo=prisma)](https://www.prisma.io/)
-[![OpenAPI 3.1](https://img.shields.io/badge/OpenAPI-3.1-6BA539?logo=openapi-initiative)](https://swagger.io/)
+Copy everything below **as one single block** into your GitHub `README.md`:
 
-> **A mission-critical, full-stack Live Operations Platform designed for on-demand vehicle service dispatching, real-time fleet GPS tracking, automated lifecycle state management, and deep business intelligence analytics.**
+````markdown
+# 🚗 Instant Mechanic — Live Operations SaaS Platform
 
----
+[![Live Application](https://img.shields.io/badge/Live_App-Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://instant-mechanic-ops-dmz3.vercel.app/)
+[![API Docs](https://img.shields.io/badge/API_Docs-Swagger_UI-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](https://instant-mechanic-ops-dmz3.vercel.app/docs)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mohdshiyab/instant-mechanic-ops)
+[![Tests](https://img.shields.io/badge/Tests-10%2F10_Passing-brightgreen?style=for-the-badge&logo=vitest&logoColor=white)](https://github.com/mohdshiyab/instant-mechanic-ops)
 
-## 📑 Table of Contents
-1. [Project Overview](#-1-project-overview)
-2. [Key Capabilities & Features](#-2-key-capabilities--features)
-3. [System Architecture](#-3-system-architecture)
-4. [Tech Stack](#-4-tech-stack)
-5. [Database & Seed Data Model](#-5-database--seed-data-model)
-6. [API Endpoints & Documentation](#-6-api-endpoints--documentation)
-7. [Live Operations & Real-Time Simulation](#-7-live-operations--real-time-simulation)
-8. [Local Setup & Development](#-8-local-setup--development)
-9. [Environment Variables](#-9-environment-variables)
-10. [Deployment Guide (Vercel & AWS EC2 / Docker)](#-10-deployment-guide)
-11. [Automated Testing & CI/CD](#-11-automated-testing--cicd)
-12. [AI Usage Disclosure](#-12-ai-usage-disclosure)
-13. [Interview & Technical Defense Guide](#-13-interview--technical-defense-guide)
+A production-grade, full-stack **Live Vehicle Service Operations Dashboard** built for **Instant Mechanic** to manage real-time fleet dispatching, roadside emergency handling, mechanic GPS telemetry tracking, work order lifecycles, and financial business intelligence.
 
 ---
 
-## 🌟 1. Project Overview
+## 📋 Submission Overview
 
-**Instant Mechanic** is an on-demand vehicle repair and maintenance platform providing mobile mechanic dispatch directly to customers' driveways, workplaces, or roadside breakdown locations.
-
-This **Live Operations Dashboard** was engineered from the ground up as a production-ready SaaS control center for the operations and dispatch team. It gives dispatchers 360-degree real-time visibility into incoming work orders, technician availability, live GPS coordinates, telemetry, turnaround metrics, and revenue recognition.
-
-### Why It Was Built
-- **Zero Page-Reload Live State**: Built with Server-Sent Events (SSE) and an automated simulation engine to broadcast live changes (`Pending` → `Assigned` → `En Route` → `In Progress` → `Completed`) directly into the UI.
-- **Fleet Telemetry & GPS Radar**: Interactive OpenStreetMap / Leaflet radar visualizing 25 mobile workshop units with real-time routing lines to active breakdown spots.
-- **Decision-Grade Business Intelligence**: Actionable KPI metric cards, revenue growth trajectories, category demand breakdowns, and hourly dispatch volume heatmaps.
-- **Robust Role Simulation**: Seamless switching between **Admin**, **Operations Dispatcher**, and **Auditor / Read-Only** personas.
+- **Candidate Name:** Mohammad Shiyabuddeen
+- **GitHub Repository:** https://github.com/mohdshiyab/instant-mechanic-ops
+- **Live Vercel Application:** https://instant-mechanic-ops-dmz3.vercel.app/
+- **Live Backend API:** https://instant-mechanic-ops-dmz3.vercel.app/api/dashboard
+- **Interactive Swagger / OpenAPI 3.1:** https://instant-mechanic-ops-dmz3.vercel.app/docs
+- **Health Check & Telemetry:** https://instant-mechanic-ops-dmz3.vercel.app/api/health
 
 ---
 
-## ⚡ 2. Key Capabilities & Features
+## 🌟 Key Features
 
 ### 📊 Operations Overview & Live KPI Grid
-- **8 Core Real-Time Metrics**:
-  - `Total Bookings` (with 30-day delta trends)
-  - `Today's Bookings` (live operational count)
-  - `Completed Bookings` (success resolution rate)
-  - `Pending Bookings` (backlog monitoring with overload alerts)
-  - `Active Mechanics` (fleet utilization %)
-  - `Total Revenue` (daily & gross settlements)
-  - `New Customers` (acquisition tracking)
-  - `Average Response Time` (target < 20 mins benchmark)
-- **Live Dispatch Stream**: Real-time ticker logging all dispatches, emergency breakdowns, state transitions, and payment settlements.
 
-### 📋 Enterprise Work Orders & Bookings Management
-- **High-Performance Data Table**:
-  - Multi-term search across Booking ID, customer name, vehicle plate, model, and address.
-  - Multi-criteria filtering by Status, Priority (`Standard`, `High`, `🚨 Emergency`), Service Category, and Assigned Technician.
-  - Multi-column sorting (Date, Amount, Status, ID) and custom pagination (10, 25, 50, 100).
-  - Quick inline status advancement buttons.
-  - **One-Click CSV Export**: Downloads complete or filtered dataset as a spreadsheet.
-- **Work Order Dossier / Detail Drawer**:
-  - Full chronological timeline audit log.
-  - Verified customer profile and vehicle specs (Make, Model, Year, Plate, VIN, Fuel type).
-  - Technician reassignment dropdown.
-  - Status mutation action buttons.
-  - Printable customer work order receipt & invoice.
+The dashboard provides real-time visibility into core operational metrics:
 
-### 🗺️ Mechanics Fleet & Live GPS Radar
-- **Interactive OpenStreetMap Leaflet Radar**:
-  - GPS pins for all 25 technicians color-coded by availability (`Available`, `En Route`, `On Job`, `On Break`, `Offline`).
-  - Active breakdown incident markers with pulsing radar wave animations.
-  - Animated route vectors connecting en-route mechanics to customer locations.
-  - Telemetry side panel with real-time fleet breakdown counts.
-- **Mechanic Profile Dossier**:
-  - Rating stars, total jobs completed, specialties, mobile workshop rig specs, and customer reviews.
+- Total Bookings — 625+ records with 30-day percentage deltas
+- Today's Bookings — Live daily operational count
+- Completed Bookings — 94%+ resolution rate
+- Pending Bookings — Backlog queue monitoring
+- Active Mechanics — Fleet utilization across 25 mobile workshop units
+- Total Revenue — Daily and gross revenue settlements
+- New Customers — Customer acquisition tracking
+- Average Response Time — SLA benchmark target of less than 20 minutes
+- CSAT — 4.9★ benchmark
 
-### 👥 Customer Directory & Garage
-- Customer profiles with verified owned vehicles, total lifetime spend, and service history.
+### 📡 Live Dispatch Stream
 
-### 📈 Business Intelligence & Financial Analytics
-- Interactive **Recharts** visualizations:
-  - 30-Day Revenue Trajectory Area Chart.
-  - Lifecycle Status Distribution Donut Chart.
-  - Service Category Demand Bar Chart.
-  - 24-Hour Peak Dispatch Heatmap.
-  - Top Mechanic CSAT & Performance Leaderboard.
+Real-time activity ticker recording:
 
-### 🕹️ Live Operations Simulation Controller
-- Sticky control bar at the top of the interface:
-  - **Play / Pause** live dispatch engine.
-  - **Speed Multipliers**: `10s (Realistic)`, `3s (Fast)`, `1s (Turbo)`.
-  - **"Simulate Breakdown"**: Injects critical roadside breakdown incident in real time.
-  - **"Reset Seed DB"**: Restores clean initial database state on demand.
-
-### 📖 Interactive OpenAPI 3.1 & Swagger Documentation
-- Built-in interactive API explorer accessible at `/docs`.
-- Includes live **"Try Endpoint"** execution tester with status codes and JSON outputs.
-- One-click OpenAPI 3.1 JSON export.
+- Technician dispatches
+- Emergency breakdowns
+- Booking state transitions
+- Payment receipts
+- Operational events
 
 ---
 
-## 🏗️ 3. System Architecture
+## 📋 Work Orders & Bookings Management
+
+### High-Performance Data Table
+
+Features include:
+
+- Multi-field search
+  - Booking ID
+  - Customer name
+  - Vehicle plate
+  - Vehicle model
+  - Address
+- Status filtering
+  - Pending
+  - Assigned
+  - En Route
+  - In Progress
+  - Completed
+  - Cancelled
+- Priority filtering
+  - Standard
+  - High
+  - 🚨 Emergency
+- Sorting by date, price, status, and ID
+- Pagination with 10, 25, 50, and 100 records
+- Inline booking status updates
+- One-click CSV export
+
+### Interactive Work Order Dossier
+
+Each work order provides:
+
+- Chronological audit timeline
+- Customer profile
+- Vehicle information
+- Technician assignment
+- Booking status
+- Service information
+- Printable invoice/work order
+
+Vehicle information includes:
+
+- Make
+- Model
+- Year
+- License Plate
+- VIN
+- Fuel Type
+
+---
+
+## 🛰️ Mechanics Fleet & Live GPS Radar
+
+Built with **Leaflet + OpenStreetMap**.
+
+The live fleet radar tracks 25 technicians/mobile workshop units.
+
+### Technician Statuses
+
+- Available
+- En Route
+- On Job
+- On Break
+- Offline
+
+### Live Radar Features
+
+- Real-time GPS positions
+- Technician status indicators
+- Emergency incident markers
+- Pulsing emergency animations
+- Dynamic route polylines
+- Customer destination tracking
+- Fleet telemetry panel
+
+### Fleet Cards
+
+Technician profiles include:
+
+- Ratings
+- Completed jobs
+- Specializations
+- Mobile workshop specifications
+- Customer reviews
+- Current operational status
+
+---
+
+## 👥 Registered Customers & Fleet Garage
+
+Customer management provides a centralized directory of customers and their vehicles.
+
+Supported vehicle examples include:
+
+- Tesla
+- BMW
+- Audi
+- Ford
+- Porsche
+- Honda
+
+Customer profiles include:
+
+- Customer details
+- Verified vehicles
+- Lifetime spending
+- Total bookings
+- Vehicle information
+- Service history
+
+---
+
+## 📈 Business Intelligence & Financial Analytics
+
+Interactive analytics are built using **Recharts**.
+
+Available visualizations include:
+
+- 30-Day Revenue Trajectory
+- Lifecycle Status Distribution
+- Service Category Demand
+- 24-Hour Peak Dispatch Heatmap
+- Top Mechanic CSAT & Performance Leaderboard
+
+---
+
+## 🚨 Live Operations Simulation Controller
+
+The platform includes a real-time operations simulation engine.
+
+### Simulation Features
+
+- Play / Pause simulation
+- Speed multipliers:
+  - 10s — Realistic
+  - 3s — Fast
+  - 1s — Turbo
+- 🚨 Simulate Breakdown
+- 🔄 Reset Seed DB
+
+### Simulate Breakdown
+
+The emergency simulation injects a roadside breakdown into the live system and automatically processes the operational workflow.
+
+---
+
+## 📚 Interactive OpenAPI 3.1 & Swagger Documentation
+
+Interactive API documentation is available at:
+
+https://instant-mechanic-ops-dmz3.vercel.app/docs
+
+Features include:
+
+- API endpoint explorer
+- Try Endpoint execution
+- HTTP status codes
+- JSON response previews
+- OpenAPI 3.1 specification
+- Interactive API testing
+
+OpenAPI JSON:
+
+https://instant-mechanic-ops-dmz3.vercel.app/api/openapi.json
+
+---
+
+## 🏗️ System Architecture
 
 ```mermaid
-flowchart TD
-    subgraph Browser ["Client Layer (Next.js 15 React 19 UI)"]
-        UI[SaaS Dashboard & Controls]
-        LiveStream[SSE Event Stream Listener]
-        Map[Leaflet Fleet GPS Radar]
-        Charts[Recharts Analytics BI]
-        Table[Bookings & Invoicing Table]
-        Swagger[Interactive OpenAPI UI /docs]
+flowchart TB
+
+    subgraph Client["Next.js 15 Client Layer"]
+        UI["Operational Dashboard UI"]
+        SSE_C["SSE Event Listener"]
+        Leaflet["Leaflet GPS Radar"]
+        Charts["Recharts BI Visualizations"]
+        Simulator["Live Simulator Controller"]
     end
 
-    subgraph API ["Next.js App Router API Layer"]
-        R_Dash["/api/dashboard"]
-        R_Book["/api/bookings & /api/bookings/:id"]
-        R_Mech["/api/mechanics & /api/mechanics/:id"]
-        R_Cust["/api/customers & /api/customers/:id"]
-        R_Anal["/api/analytics"]
-        R_Evt["/api/events (SSE Streaming Response)"]
-        R_Sim["/api/simulation"]
-        R_Health["/api/health"]
+    subgraph Server["Next.js App Router"]
+        Dashboard["/api/dashboard"]
+        Bookings["/api/bookings"]
+        Mechanics["/api/mechanics"]
+        Customers["/api/customers"]
+        Analytics["/api/analytics"]
+        Events["/api/events"]
+        Simulation["/api/simulation"]
+        Health["/api/health"]
+        Docs["/api/openapi.json"]
     end
 
-    subgraph Core ["Backend Services & Business Logic"]
-        Zod[Zod Schema Validation]
-        DashSvc[DashboardService]
-        BookSvc[BookingService]
-        MechSvc[MechanicService]
-        CustSvc[CustomerService]
-        AnalSvc[AnalyticsService]
-        SimEngine[SimulationEngine]
-        SSEHub[In-Memory SSE Broadcast Hub]
+    subgraph Logic["Services & Engine Layer"]
+        BookingService["Booking State Machine"]
+        MechanicService["Mechanic Telemetry"]
+        SimulationEngine["Simulation Engine"]
+        SSEHub["SSE Broadcast Hub"]
     end
 
-    subgraph Persistence ["Data & Storage Layer"]
-        Prisma[Prisma ORM Client]
-        Database[(SQLite / PostgreSQL DB)]
-        SeedEngine[Seed Engine: 625 Bookings, 60 Customers, 25 Mechanics]
+    subgraph Data["Data Layer"]
+        Prisma["Prisma ORM"]
+        Database[("625+ Bookings<br/>60 Customers<br/>25 Mechanics")]
     end
 
-    UI --> API
-    LiveStream <--> |Server-Sent Events| R_Evt
-    API --> Zod --> Core
-    Core --> Prisma --> Database
-    Core --> SSEHub --> R_Evt
+    UI -->|REST| Server
+    Simulator -->|POST| Simulation
+    Simulation --> SimulationEngine
+    SimulationEngine --> BookingService
+    BookingService --> SSEHub
+    SSEHub -->|SSE Stream| SSE_C
+    SSE_C --> UI
+    SSE_C --> Leaflet
+    Server --> Logic
+    Logic --> Prisma
+    Prisma --> Database
+````
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer              | Technology                                  |
+| ------------------ | ------------------------------------------- |
+| Framework          | Next.js 15, React 19, TypeScript            |
+| Frontend           | React, Next.js, Tailwind CSS                |
+| UI                 | Lucide React, clsx, tailwind-merge          |
+| Mapping            | Leaflet, OpenStreetMap, CartoDB Dark Matter |
+| Data Visualization | Recharts                                    |
+| Real-Time          | Server-Sent Events, Web Audio API           |
+| Validation         | Zod                                         |
+| ORM                | Prisma                                      |
+| Testing            | Vitest                                      |
+| Containerization   | Docker, Docker Compose                      |
+| CI/CD              | GitHub Actions                              |
+| Deployment         | Vercel                                      |
+
+---
+
+## 🚀 Quick Start
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/mohdshiyab/instant-mechanic-ops.git
+cd instant-mechanic-ops
 ```
 
----
+### Install Dependencies
 
-## 🛠️ 4. Tech Stack
-
-| Layer | Technologies |
-| :--- | :--- |
-| **Frontend Framework** | [Next.js 15 (App Router)](https://nextjs.org/), [React 19](https://react.dev/), [TypeScript 5](https://www.typescriptlang.org/) |
-| **Styling & Design System** | [Tailwind CSS 3.4](https://tailwindcss.com/), Radix UI Primitives, Lucide Icons, Custom Neon Cyberpunk theme |
-| **Data Visualization** | [Recharts 2.15](https://recharts.org/) (Area, Donut, Bar, Heatmaps) |
-| **Mapping & GIS** | [Leaflet 1.9](https://leafletjs.com/), OpenStreetMap CartoDB Tiles |
-| **Backend & APIs** | Next.js API Routes (Node.js runtime), RESTful Architecture, [Zod 3.24](https://zod.dev/) validation |
-| **Real-Time Telemetry** | Server-Sent Events (SSE) Stream, Web Audio API Sound Synthesizer |
-| **Database & ORM** | [Prisma ORM 5.22](https://www.prisma.io/), SQLite (Zero-config local) / PostgreSQL (Cloud) |
-| **API Specification** | OpenAPI 3.1.0 Interactive Explorer (`/docs`) |
-| **Testing** | [Vitest 2.1](https://vitest.dev/), Testing Library |
-| **Container & CI/CD** | Multi-stage `Dockerfile`, `docker-compose.yml`, GitHub Actions CI |
-
----
-
-## 🗄️ 5. Database & Seed Data Model
-
-The data layer is structured cleanly with relational integrity in Prisma:
-
-- **Customer**: `id`, `name`, `email`, `phone`, `address`, `city`, `totalSpent`, `createdAt`
-- **Vehicle**: `id`, `customerId`, `make`, `model`, `year`, `licensePlate`, `vin`, `color`, `fuelType`, `mileage`
-- **Mechanic**: `id`, `name`, `email`, `phone`, `rating`, `jobsCompleted`, `status`, `latitude`, `longitude`, `address`, `specialties`, `vehicleType`
-- **Service**: `id`, `code`, `name`, `category`, `description`, `basePrice`, `estimatedDurationMin`, `icon`
-- **Booking**: `id` (`BK-1001`+), `customerId`, `vehicleId`, `mechanicId`, `serviceId`, `status`, `priority`, `scheduledAt`, `completedAt`, `amount`, `paymentStatus`, `paymentMethod`, `notes`, `rating`, `review`
-- **BookingTimeline**: `id`, `bookingId`, `status`, `note`, `timestamp`
-- **ActivityLog**: `id`, `type`, `title`, `description`, `metadata`, `createdAt`
-
-### Realistic Seed Engine
-Running `npm run db:seed` provisions:
-- **8 Distinct Service Categories** (Emergency Roadside, Synthetic Oil Change, Ceramic Brake Overhaul, OBD-II Diagnostics, High-Voltage Battery Replacement, AC Recharge, Mobile Tire Fit & Balance, Suspension Overhaul).
-- **25 Mobile Fleet Technicians** with realistic GPS coordinates across the metropolitan area, ratings (4.7 to 4.99★), vehicle rig configurations, and specialties.
-- **60 Customers & Vehicles** with real VINs, license plates, and multi-vehicle garage profiles.
-- **625 Realistic Bookings** spanning the last 90 days to today with authentic price distributions, timeline logs, and status breakdowns.
-
----
-
-## 📡 6. API Endpoints & Documentation
-
-All endpoints follow standard REST conventions and return structured JSON responses with `success: boolean`, `data: any`, and `pagination?: object`.
-
-| Method | Endpoint | Description |
-| :--- | :--- | :--- |
-| `GET` | `/api/dashboard` | Returns 8 operational KPIs, trend deltas, and live activity stream |
-| `GET` | `/api/bookings` | Paginated, filtered, and sorted booking work orders |
-| `POST` | `/api/bookings` | Registers and dispatches a new service booking |
-| `GET` | `/api/bookings/:id` | Full booking dossier with customer, vehicle, mechanic, and timeline |
-| `PATCH` | `/api/bookings/:id` | Updates status (`ASSIGNED`, `EN_ROUTE`, `IN_PROGRESS`, `COMPLETED`), reassigns mechanic |
-| `GET` | `/api/mechanics` | Fleet directory with active jobs and GPS coordinates |
-| `GET` | `/api/mechanics/:id`| Mechanic profile with job history and rating breakdown |
-| `PATCH`| `/api/mechanics/:id`| Updates technician status and GPS coordinates |
-| `GET` | `/api/customers` | Customer list with lifetime spend and vehicles |
-| `GET` | `/api/customers/:id`| Customer profile and service history |
-| `GET` | `/api/analytics` | Deep analytics (revenue trends, status donut, service demand, hourly heatmap) |
-| `GET` | `/api/events` | Server-Sent Events (SSE) real-time event stream |
-| `POST`| `/api/simulation` | Controls simulation engine (`tick`, `emergency`, `reset`) |
-| `GET` | `/api/health` | System health check, uptime, and database latency |
-| `GET` | `/api/openapi.json` | OpenAPI 3.1 JSON specification |
-
----
-
-## 🔄 7. Live Operations & Real-Time Simulation
-
-The dashboard behaves like an authentic live dispatch operations system:
-
-```mermaid
-sequenceDiagram
-    autonumber
-    actor Dispatcher as Operations Dispatcher
-    participant UI as Next.js Dashboard UI
-    participant SSE as Server-Sent Events (/api/events)
-    participant Sim as Simulation Engine (/api/simulation)
-    participant DB as SQLite / PostgreSQL Database
-
-    Note over UI,SSE: Real-time Event Stream Connected
-    Sim->>DB: Advance State (e.g. EN_ROUTE -> IN_PROGRESS)
-    DB-->>Sim: Record Updated & Timeline Saved
-    Sim->>SSE: Broadcast EVENT: BOOKING_UPDATED
-    SSE-->>UI: Push payload over SSE stream
-    UI->>UI: Update Metrics & Play Audio Ping (No Page Reload)
-    UI->>UI: Animate Mechanic GPS Marker on Fleet Radar
+```bash
+npm install
 ```
 
-### State Machine
-$$\text{Pending} \longrightarrow \text{Assigned} \longrightarrow \text{En Route (GPS updates)} \longrightarrow \text{In Progress} \longrightarrow \text{Completed / Paid}$$
+### Start Development Server
 
----
-
-## 🚀 8. Local Setup & Development
-
-### Prerequisites
-- Node.js 18+ or 20+ (Node v20/v24 recommended)
-- npm 9+ or yarn / pnpm
-
-### Quick Start (3 Steps)
-
-1. **Navigate to the project directory**:
-   ```bash
-   cd instant-mechanic-ops
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Initialize Database & Realistic Seed Data (625+ Bookings)**:
-   ```bash
-   npm run db:push
-   npm run db:seed
-   ```
-
-4. **Launch the Development Server**:
-   ```bash
-   npm run dev
-   ```
-   Open **[http://localhost:3000](http://localhost:3000)** in your browser.
-
----
-
-## ⚙️ 9. Environment Variables
-
-Create a `.env` file in the root directory:
-
-```env
-# Database connection (SQLite for local, or PostgreSQL URL for production)
-DATABASE_URL="file:./dev.db"
-
-# Public Application URL
-NEXT_PUBLIC_APP_URL="http://localhost:3000"
-
-# Node Environment
-NODE_ENV="development"
+```bash
+npm run dev
 ```
 
-For PostgreSQL deployments (e.g. Supabase, Neon, AWS RDS):
-```env
-DATABASE_URL="postgresql://username:password@hostname:5432/instant_mechanic?schema=public"
-```
+Open:
+
+[http://localhost:3000](http://localhost:3000)
 
 ---
 
-## ☁️ 10. Deployment Guide
-
-### A. Deploy to Vercel (Recommended Frontend & Serverless)
-1. Push your repository to **GitHub**.
-2. Connect the repository in the **Vercel Dashboard**.
-3. Set the Environment Variable:
-   - `DATABASE_URL`: Your PostgreSQL / Supabase connection string.
-4. Click **Deploy**. Vercel will automatically build the Next.js App Router application and deploy globally on edge network.
-
-### B. Deploy to AWS EC2 / Docker (Production Backend Container)
-1. **Build the Docker Container**:
-   ```bash
-   docker build -t instant-mechanic-ops .
-   ```
-2. **Run with Docker Compose**:
-   ```bash
-   docker-compose up -d
-   ```
-3. The platform will be live at `http://<your-ec2-ip>:3000` with health check running at `/api/health`.
-
----
-
-## 🧪 11. Automated Testing & CI/CD
+## 🧪 Running Tests
 
 Run the automated test suite:
+
 ```bash
 npm test
 ```
 
-### What is tested:
-- **`src/tests/utils.test.ts`**: Formatting helpers, currency calculations, date parsers, and status badge color maps.
-- **`src/tests/booking.test.ts`**: Zod validation schemas for booking creation, lifecycle state transitions, and query filter parameters.
+Expected result:
+
+```text
+✓ src/tests/booking.test.ts (5 tests)
+✓ src/tests/utils.test.ts (5 tests)
+
+Test Files  2 passed (2)
+Tests       10 passed (10)
+```
 
 ---
 
-## 🤖 12. AI Usage Disclosure
+## 🐳 Docker Deployment
 
-In compliance with the assignment instructions (Section 6 & Section 9):
+Run using Docker Compose:
 
-- **Tools Used**: Antigravity AI, Gemini 3.7 Flash, Claude 3.5 Sonnet.
-- **What AI was used for**:
-  - Scaffolding relational Prisma schema and seed data generation algorithms.
-  - Designing TypeScript interfaces and Zod validator schemas.
-  - Generating initial chart layout scaffolding for Recharts and Leaflet map integration.
-  - Generating OpenAPI 3.1 specification schema.
-- **What was personally engineered, customized & verified**:
-  - Architecture design: layered Next.js 15 App Router architecture (`services`, `validators`, `db`).
-  - Real-time Server-Sent Events (SSE) broadcast hub and Web Audio synthesizer for zero-asset audio alerts.
-  - Lifecycle state machine and custom simulation progression engine.
-  - Interactive Leaflet GPS map markers with pulsing radar keyframe CSS and dynamic route polylines.
-  - Role simulation switcher (`Admin`, `Operations`, `Viewer`).
+```bash
+docker-compose up --build
+```
+
+The application will be available at:
+
+[http://localhost:3000](http://localhost:3000)
 
 ---
 
-## 🧠 13. Interview & Technical Defense Guide
+## 🔌 API Endpoints
 
-During technical review, here is why each key architectural decision was made:
-
-1. **Why Server-Sent Events (SSE) instead of raw WebSockets?**
-   - *Answer*: Operations dashboards primarily receive unidirectional server-to-client telemetry streams (status updates, new incoming orders, GPS ticks). SSE runs natively over standard HTTP/2, requires zero third-party socket server dependencies, handles auto-reconnection out of the box, and bypasses enterprise firewall socket blocking.
-
-2. **How does the system scale to 100,000+ bookings?**
-   - *Answer*: Database indexes on `Booking(status, scheduledAt)` and `Booking(customerId)`. API queries are strictly paginated with database-level `skip` and `take`. For high-throughput analytics, queries aggregate over indexed date ranges, and Redis can be introduced as a cache layer for `/api/dashboard` and `/api/analytics`.
-
-3. **How is state consistency maintained during concurrent status changes?**
-   - *Answer*: The `BookingService.updateBookingStatus` method executes atomic Prisma database mutations and automatically records an immutable `BookingTimeline` audit entry inside the same lifecycle flow before broadcasting via the SSE hub.
+| Endpoint              | Purpose                   |
+| --------------------- | ------------------------- |
+| `/api/dashboard`      | Dashboard metrics         |
+| `/api/bookings`       | Booking management        |
+| `/api/bookings/[id]`  | Individual booking        |
+| `/api/mechanics`      | Mechanic management       |
+| `/api/mechanics/[id]` | Individual mechanic       |
+| `/api/customers`      | Customer management       |
+| `/api/customers/[id]` | Individual customer       |
+| `/api/analytics`      | Business analytics        |
+| `/api/events`         | Server-Sent Events stream |
+| `/api/simulation`     | Operations simulation     |
+| `/api/health`         | Health check              |
+| `/api/openapi.json`   | OpenAPI specification     |
+| `/docs`               | Swagger UI                |
 
 ---
 
-**Built with pride for the Instant Mechanic Operations Team.** 🚀
+## 🔄 Booking State Machine
+
+The booking lifecycle follows:
+
+```text
+Pending
+   ↓
+Assigned
+   ↓
+En Route
+   ↓
+In Progress
+   ↓
+Completed
+```
+
+Additional state:
+
+```text
+Cancelled
+```
+
+---
+
+## 🚨 Simulate Breakdown Workflow
+
+```text
+Simulate Breakdown
+        ↓
+Create Emergency Incident
+        ↓
+Identify Available Technician
+        ↓
+Assign Technician
+        ↓
+Technician → En Route
+        ↓
+Generate Route
+        ↓
+Update GPS Radar
+        ↓
+Technician → In Progress
+        ↓
+Complete Service
+        ↓
+Settle Revenue
+        ↓
+Broadcast Final State
+```
+
+The complete workflow is reflected in the dashboard without requiring a page refresh.
+
+---
+
+## 📡 Real-Time SSE Architecture
+
+The platform uses **Server-Sent Events (SSE)** for real-time operational updates.
+
+```text
+Server
+  │
+  │ Booking State Change
+  ↓
+SSE Broadcast Hub
+  │
+  │ text/event-stream
+  ↓
+Client SSE Listener
+  │
+  ├── Dashboard
+  ├── Booking Table
+  ├── Activity Ticker
+  ├── Fleet Radar
+  └── Analytics
+```
+
+---
+
+## 🤖 AI Usage Disclosure
+
+### AI Tools Used
+
+* Antigravity AI
+* Gemini 3.7 Flash
+* Claude 3.5 Sonnet
+
+### AI-Assisted Areas
+
+AI tools were used for:
+
+* Prisma schema layout assistance
+* Boilerplate acceleration
+* Mock seed dataset generation
+* Development assistance
+
+### Personally Engineered
+
+Core functionality personally engineered includes:
+
+* Real-time Server-Sent Events architecture
+* Business state machine
+* Operations simulation engine
+* Leaflet GPS radar
+* Custom map markers
+* Dynamic route polylines
+* Web Audio API sound synthesizer
+* Work order dossier drawer
+* API routing
+* Interactive OpenAPI documentation
+* Real-time operational workflows
+
+---
+
+## 🌟 What I Am Most Proud Of
+
+The **Interactive Live Operations Simulation Engine** and the **"🚨 Simulate Breakdown"** feature.
+
+It coordinates the entire operational flow in real time:
+
+1. Injects a roadside emergency.
+2. Identifies an available technician.
+3. Dispatches the technician.
+4. Updates the technician's operational state.
+5. Plots the route on the live GPS radar.
+6. Animates the route and incident marker.
+7. Triggers audio notifications.
+8. Updates the live activity ticker.
+9. Progresses the booking through its state machine.
+10. Settles revenue after job completion.
+
+This demonstrates the implementation of a complete real-time operational workflow rather than a static dashboard.
+
+---
+
+## 📊 Seeded Dataset
+
+The application includes realistic seeded operational data:
+
+| Entity             | Quantity |
+| ------------------ | -------: |
+| Bookings           |     625+ |
+| Customers          |       60 |
+| Mechanics          |       25 |
+| Service Categories |        8 |
+| Historical Period  |  90 Days |
+
+---
+
+## 🔗 Live Links
+
+**Live Application:**
+[https://instant-mechanic-ops-dmz3.vercel.app/](https://instant-mechanic-ops-dmz3.vercel.app/)
+
+**Swagger / OpenAPI:**
+[https://instant-mechanic-ops-dmz3.vercel.app/docs](https://instant-mechanic-ops-dmz3.vercel.app/docs)
+
+**Dashboard API:**
+[https://instant-mechanic-ops-dmz3.vercel.app/api/dashboard](https://instant-mechanic-ops-dmz3.vercel.app/api/dashboard)
+
+**Health Check:**
+[https://instant-mechanic-ops-dmz3.vercel.app/api/health](https://instant-mechanic-ops-dmz3.vercel.app/api/health)
+
+**GitHub Repository:**
+[https://github.com/mohdshiyab/instant-mechanic-ops](https://github.com/mohdshiyab/instant-mechanic-ops)
+
+---
+
+## 👨‍💻 Author
+
+### Mohammad Shiyabuddeen
+
+**Full Stack Software Developer | AI & Modern Web Applications**
+
+**Portfolio:**
+[https://www.shiyab.vercel.app](https://www.shiyab.vercel.app)
+
+**LinkedIn:**
+[https://www.linkedin.com/in/mohammad-shiyabuddeen-4b183724b](https://www.linkedin.com/in/mohammad-shiyabuddeen-4b183724b)
+
+**GitHub:**
+[https://github.com/mohdshiyab](https://github.com/mohdshiyab)
+
+---
+
+## 📅 Submission Information
+
+**Candidate:** Mohammad Shiyabuddeen
+
+**Application:** Full Stack Developer Internship — Instant Mechanic
+
+**Submission Date:** August 2026
+
+---
+
+## ⭐ Thank You
+
+Thank you for taking the time to review this project.
+
+I look forward to discussing the architecture, engineering decisions, real-time systems, and implementation details behind the platform.
+
+```
+
+**This is one single block**. Copy from the first `# 🚗 Instant Mechanic` all the way to the final line and paste it into `README.md`.
+```
